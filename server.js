@@ -6,12 +6,14 @@ const rateLimit = require("express-rate-limit");
 const authRoutes = require("./routes/authRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 const jobRoutes = require("./routes/jobRoutes");
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
+app.use(cookieParser());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
